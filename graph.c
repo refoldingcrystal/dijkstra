@@ -1,6 +1,4 @@
 #include "graph.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void init_edge_list(EdgeList *list, int capacity) {
   list->size = 0;
@@ -33,13 +31,7 @@ void free_edge_list(EdgeList *list) {
   list->capacity = 0;
 }
 
-void read_graph(const char *filename, int *n, int *m, EdgeList **graph) {
-  FILE *file = fopen(filename, "r");
-  if (!file) {
-    perror("nie mozna otworzyc pliku");
-    exit(EXIT_FAILURE);
-  }
-
+void read_graph(FILE *file, int *n, int *m, EdgeList **graph) {
   fscanf(file, "%d %d", n, m);
 
   *graph = (EdgeList *)malloc((*n + 1) * sizeof(EdgeList));

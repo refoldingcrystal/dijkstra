@@ -1,6 +1,8 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include <stdio.h>
+#include <stdlib.h>
 #define INF 1000000007
 
 typedef struct {
@@ -16,7 +18,7 @@ void init_edge_list(EdgeList *list, int capacity);
 void add_edge(EdgeList *list, int dest, int weight);
 void free_edge_list(EdgeList *list);
 
-void read_graph(const char *filename, int *n, int *m, EdgeList **graph);
+void read_graph(FILE *file, int *n, int *m, EdgeList **graph);
 void free_graph(EdgeList *graph, int n);
 void print_graph(EdgeList *graph, int n);
 
