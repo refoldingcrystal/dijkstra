@@ -3,34 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_dist( int n, int *dist, int start) {
-  printf("odleglosci od startu (%d):\n", start);
-  for (int i = 1; i <= n; i++) {
-    if (i == start) continue;
-    printf("%d: ", i);
-    if (dist[i] == INF){
-      printf("INF (sciezka nie istnieje)\n");
-    } else {
-      printf("%d\n", dist[i]);
-    }
-  }
-}
-
-void print_path(int n, int *par, int *dist, int start, int finish) {
-  int path[n + 1];
-  int path_len = n;
-  restore_path(start, finish, par, path, &path_len);
-  if (path_len) {
-    printf("sciezka %d -> %d (dlugosc %d):\n", start, finish, dist[finish]);
-    for (int i = 0; i < path_len; i++) {
-      printf("%d ", path[i]);
-    }
-    printf("\n");
-  } else {
-    printf("sciezka %d -> %d nie istnieje\n", start, finish);
-  }
-}
-
 int main(int argc, char **argv) {
   if (argc < 2) {
     printf("nie podano pliku z grafem\n");
