@@ -9,7 +9,7 @@ Aby skompilować program należy użyć polecenia `make`
 Jeżeli nie zostanie podany:
 - plik z grafem -> program zakończy działanie 
 - wierzchołek startowy -> program ustawi go na '1' 
-- wierzchołek koncowy -> program wypisze trasy do wszystkich wierzchołków 
+- wierzchołek koncowy -> program wypisze odleglosci do wszystkich wierzchołków 
 
 Program zakończy działanie także w przypadku gdy plik z grafem nie istnieje
 

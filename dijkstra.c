@@ -47,7 +47,7 @@ void restore_path(int start, int finish, int *par, int *path, int *path_len) {
 }
 
 void print_dist( int n, int *dist, int start) {
-  printf("odleglosci od startu (%d):\n", start);
+  printf("\e[94modleglosci od startu (%d):\e[0m\n", start);
   for (int i = 1; i <= n; i++) {
     if (i == start) continue;
     printf("%d: ", i);
@@ -64,12 +64,12 @@ void print_path(int n, int *par, int *dist, int start, int finish) {
   int path_len = n;
   restore_path(start, finish, par, path, &path_len);
   if (path_len) {
-    printf("sciezka %d -> %d (dlugosc %d):\n", start, finish, dist[finish]);
+    printf("\e[92msciezka %d -> %d (dlugosc %d):\e[0m\n", start, finish, dist[finish]);
     for (int i = 0; i < path_len; i++) {
       printf("%d ", path[i]);
     }
     printf("\n");
   } else {
-    printf("sciezka %d -> %d nie istnieje\n", start, finish);
+    printf("\e[92msciezka %d -> %d nie istnieje\e[0m\n", start, finish);
   }
 }

@@ -1,4 +1,5 @@
 #include "graph.h"
+#include <stdio.h>
 
 void init_edge_list(EdgeList *list, int capacity) {
   list->size = 0;
@@ -63,10 +64,12 @@ void free_graph(EdgeList *graph, int n) {
 }
 
 void print_graph(EdgeList *graph, int n) {
+  printf("\e[94mgraf:\e[0m\n");
   for (int i = 1; i <= n; i++) {
+    printf("%d: ", i);
     for (int j = 0; j < graph[i].size; j++) {
-      printf("%d -> %d (%d)\n", i, graph[i].array[j].dest,
-             graph[i].array[j].weight);
+      printf("%d(%d) ", graph[i].array[j].dest, graph[i].array[j].weight);
     }
+    printf("\n");
   }
 }
