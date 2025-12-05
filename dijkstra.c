@@ -29,6 +29,10 @@ void restore_path(int start, int finish, int *par, int *path, int *path_len) {
   int v = finish;
 
   while (v != start) {
+    if (par[v] == v){
+      *path_len = 0;
+      return;
+    }
     tmp[tmp_len] = v;
     v = par[v];
     tmp_len++;
