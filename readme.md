@@ -7,9 +7,9 @@ Aby skompilować program należy użyć polecenia `make`
 `./dijkstra <plik_z_grafem> [start] [koniec]`
 
 Jeżeli nie zostanie podany:
-- Plik z grafem, program zakończy działanie 
-- Wierzchołek startowy, program ustawi go na '1' 
-- Wierzchołek koncowy, program wypisze trasy do wszystkich wierzchołków 
+- plik z grafem -> program zakończy działanie 
+- wierzchołek startowy -> program ustawi go na '1' 
+- wierzchołek koncowy -> program wypisze trasy do wszystkich wierzchołków 
 
 Program zakończy działanie także w przypadku gdy plik z grafem nie istnieje
 
