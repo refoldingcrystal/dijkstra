@@ -3,6 +3,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void print_dist( int n, int *dist, int start) {
+  printf("odleglosci od startu (%d):\n", start);
+  for (int i = 1; i <= n; i++) {
+    if (i == start) continue;
+    printf("%d: ", i);
+    if (dist[i] == INF){
+      printf("INF (sciezka nie istnieje)\n");
+    } else {
+      printf("%d\n", dist[i]);
+    }
+  }
+}
+
+void print_path(int n, int *par, int *dist, int start, int finish) {
+  int path[n + 1];
+  int path_len = n;
+  restore_path(start, finish, par, path, &path_len);
+  if (path_len) {
+    printf("sciezka %d -> %d (dlugosc %d):\n", start, finish, dist[finish]);
+    for (int i = 0; i < path_len; i++) {
+      printf("%d ", path[i]);
+    }
+    printf("\n");
+  } else {
+    printf("sciezka %d -> %d nie istnieje\n", start, finish);
+  }
+}
+
 int main(int argc, char **argv) {
   if (argc < 2) {
     printf("nie podano pliku z grafem\n");
@@ -15,7 +43,7 @@ int main(int argc, char **argv) {
     printf("nie mozna otworzyc pliku '%s'\n", filename);
     exit(EXIT_FAILURE);
   }
-  int start, finish, single_path = 1;
+  int start, finish;
   if (argc < 3) {
     start = 1;
     printf("nie podano wiercholka poczatkowego\n");
@@ -23,9 +51,9 @@ int main(int argc, char **argv) {
     start = atoi(argv[2]);
   }
   if (argc < 4) {
-    single_path = 0;
     printf("nie podano wiercholka koncowego\n");
-    printf("wyswietlam wszystkie trasy z %d\n", start);
+    printf("wyswietlam odleglosci z %d\n", start);
+    finish = -1;
   } else {
     finish = atoi(argv[3]);
     printf("wyswietlam trase %d -> %d\n", start, finish);
@@ -48,20 +76,10 @@ int main(int argc, char **argv) {
 
   dijkstra(graph, dist, marked, par, n);
 
-  int path[n + 1];
-  int path_len = n;
-  if (single_path) {
-    restore_path(start, finish, par, path, &path_len);
-    printf("sciezka z %d do %d:\n", start, finish);
-    for (int i = 0; i < path_len; i++) {
-      printf("%d ", path[i]);
-    }
-    printf("\n");
+  if (finish != -1) {
+    print_path(n, par, dist, start, finish);
   } else {
-    printf("odleglosci od %d:\n", start);
-    for (int i = 1; i <= n; i++) {
-      printf("%d : %d\n", i, dist[i]);
-    }
+    print_dist(n, dist, start);
   }
 
   free_graph(graph, n);
