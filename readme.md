@@ -21,7 +21,7 @@ W następnych `m` wierszach znajdują się opisy krawędzi. W każdym wierszu zn
 
 ```
 graph.txt
-9 9
+9 11
 1 2 7
 1 3 9
 1 6 14
@@ -34,8 +34,3 @@ graph.txt
 7 8 1
 8 9 2
 ```
-
-## Todo
-
-- efektywne liczenie wszystkich sciezek
-- sciezka miedzy rozlacznymi wierzcholkami sie wykrzacza
